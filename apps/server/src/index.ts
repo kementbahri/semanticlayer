@@ -27,8 +27,7 @@ server.register(fastifyStatic, {
 const sl = new SemanticLayer({
   browser: { 
     maxInstances: 2, 
-    headless: true,
-    executablePath: process.env.PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD ? '/usr/bin/google-chrome' : undefined
+    headless: true
   },
   logLevel: 0
 });
