@@ -1,0 +1,16 @@
+services:
+  semanticlayer:
+    build:
+      context: ..
+      dockerfile: docker/Dockerfile
+    environment:
+      - NODE_ENV=production
+    volumes:
+      - sl-cache:/app/.cache
+    deploy:
+      resources:
+        limits:
+          memory: 2G
+
+volumes:
+  sl-cache:

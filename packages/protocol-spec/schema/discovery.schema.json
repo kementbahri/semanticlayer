@@ -1,0 +1,57 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://semanticlayer.dev/schema/discovery.json",
+  "title": "SemanticLayer Discovery Document",
+  "description": "Schema for /.well-known/semanticlayer.json",
+  "type": "object",
+  "required": ["version", "name", "description", "endpoints", "supportedModes"],
+  "properties": {
+    "version": {
+      "type": "string",
+      "pattern": "^\\d+\\.\\d+$",
+      "description": "Protocol version"
+    },
+    "name": {
+      "type": "string",
+      "minLength": 1,
+      "description": "Human-readable site name"
+    },
+    "description": {
+      "type": "string",
+      "description": "Brief site description for AI context"
+    },
+    "defaultFormat": {
+      "type": "string",
+      "enum": ["markdown", "slml", "json", "text"],
+      "default": "markdown"
+    },
+    "endpoints": {
+      "type": "object",
+      "required": ["content"],
+      "properties": {
+        "content": { "type": "string", "description": "Content endpoint path" },
+        "sitemap": { "type": "string", "description": "Sitemap endpoint path" },
+        "search": { "type": "string", "description": "Search endpoint path" }
+      }
+    },
+    "supportedModes": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "enum": ["content", "structured", "full", "raw"]
+      },
+      "minItems": 1
+    },
+    "languages": {
+      "type": "array",
+      "items": { "type": "string", "pattern": "^[a-z]{2}(-[A-Z]{2})?$" }
+    },
+    "rateLimit": {
+      "type": "object",
+      "properties": {
+        "requestsPerMinute": { "type": "integer", "minimum": 1 },
+        "burst": { "type": "integer", "minimum": 1 }
+      }
+    }
+  }
+}

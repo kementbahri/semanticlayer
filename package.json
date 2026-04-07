@@ -1,0 +1,36 @@
+{
+  "name": "semanticlayer",
+  "version": "0.1.0",
+  "private": true,
+  "description": "AI-optimized web content protocol and extraction engine",
+  "author": "Bahri Kement",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/kementbahri/semanticlayer"
+  },
+  "homepage": "https://semanticlayer.dev",
+  "bugs": {
+    "url": "https://github.com/kementbahri/semanticlayer/issues"
+  },
+  "engines": {
+    "node": ">=20.0.0",
+    "pnpm": ">=9.0.0"
+  },
+  "scripts": {
+    "build": "turbo run build",
+    "dev": "turbo run dev",
+    "lint": "turbo run lint",
+    "test": "turbo run test",
+    "typecheck": "turbo run typecheck",
+    "clean": "turbo run clean",
+    "format": "prettier --write \"**/*.{ts,tsx,md,json}\""
+  },
+  "devDependencies": {
+    "@types/node": "^25.5.2",
+    "prettier": "^3.3.0",
+    "turbo": "^2.3.0",
+    "typescript": "^5.6.0"
+  },
+  "packageManager": "pnpm@9.15.0"
+}
