@@ -9,6 +9,8 @@
 [![TypeScript](https://img.shields.io/badge/TypeScript-5.6+-blue.svg)](https://typescriptlang.org)
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](CONTRIBUTING.md)
 
+[![SemanticLayer Demo](semantic-search.PNG)](https://semantic-layer.depiar.com)
+
 *Extract clean, token-efficient content from any web page — including React, Vue, Angular, and Svelte SPAs.*
 
 [Protocol Spec](packages/protocol-spec/spec.md) · [Getting Started](#getting-started) · [CLI Usage](#cli-usage) · [MCP Server](#mcp-server) · [Contributing](CONTRIBUTING.md)
@@ -68,19 +70,35 @@ SemanticLayer is two things:
 
 SemanticLayer is designed to be easily deployed as a monorepo. The server handles both the API and the static web client.
 
-**Option 1: Railway / Render (Docker)**
-Use the provided `Dockerfile` to deploy a container with Playwright pre-installed.
-1. Connect your GitHub repository to [Railway.app](https://railway.app).
+**Option 1: VPS / Plesk (Docker)**
+Use the provided `Dockerfile` to deploy on a Linux VPS. This handles the Playwright dependencies that often fail on legacy servers (like CentOS 7).
+
+1. Clone and enter directory:
+   ```bash
+   git clone https://github.com/kementbahri/semanticlayer.git .
+   ```
+2. Build the Docker image:
+   ```bash
+   docker build -t semanticlayer .
+   ```
+3. Run the container:
+   ```bash
+   docker run -d -p 3100:3100 --name semantic-app --restart always semanticlayer
+   ```
+4. Set up a **Reverse Proxy** in Plesk (Domains > Docker Proxy Rules) to map your domain to port `3100`.
+
+**Option 2: Cloud Platforms (Railway / Render)**
+1. Connect your GitHub repository.
 2. It will automatically detect the `Dockerfile`.
 3. Set the `PORT` environment variable to `3100`.
 
-**Option 2: GitHub Codespaces**
-Anyone can run a private instance of SemanticLayer by clicking **Code > Open with Codespaces**.
+**Option 3: GitHub Codespaces**
+Anyone can run a private instance by clicking **Code > Open with Codespaces**.
 
 ---
 
 ###  Live Demo Setup
-Once deployed, the web interface will be accessible at your deployment URL. AI agents can also interact directly with the `/api/extract` endpoint.
+Once deployed, the web interface will be accessible at your domain. AI agents can also interact directly with the `/api/extract` endpoint.
 
 ```bash
 # Example remote extraction
