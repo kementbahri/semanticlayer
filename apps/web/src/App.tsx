@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { ArrowRight, Sparkles, Layers, Activity, FileText } from 'lucide-react';
+import { Sparkles, Layers, Activity, FileText } from 'lucide-react';
 
 export default function App() {
   const [url, setUrl] = useState('');
@@ -18,7 +18,7 @@ export default function App() {
     setResult(null);
 
     try {
-      const response = await fetch('http://localhost:3100/api/extract', {
+      const response = await fetch('/api/extract', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ url, mode, format }),
